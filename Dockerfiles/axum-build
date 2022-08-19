@@ -1,0 +1,5 @@
+FROM rust:1.63
+
+WORKDIR /app
+
+CMD cargo build --release 
