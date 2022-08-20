@@ -46,4 +46,30 @@ Overall for deployment, FastAPI takes more configuration: various base images (b
 
 ## Speed
 
+Docker Desktop settings used:
 <img src="./assets/docker-settings.png" width=50% />
+<br>
+<br>
+
+Results for axum times / fastapi times:
+
+<img src="./assets/docker-times.png" width=30% />
+<br>
+<br>
+
+Visualized results by threads and number of requests (axum: red, fastapi: blue):
+<img src="./assets/route_testing-times.png" />
+<br>
+<br>
+
+Overall, `axum` is faster in my very limited tests by ~6% than `FastAPI`. These results show that this is a negligible consideration for choosing between the frameworks. However, other online sources have shown `axum` to be one of the fastest servers available and a magnitude (~5x) faster than `FastAPI`. The CPU usage during the tests suggests the client is the bottleneck here for the benchmarks. To improve upon these results, server-side timings would need to be collected.
+
+## Conclusion 
+
+Both frameworks offer a nice interface for creating and deploying micro-services/servers quickly. `FastAPI` is a mature and very pythonic framework. However if given a blank slate, I would choose `axum` and Rust for new project for these reasons:
+- the memory and type safety of Rust
+- similar code complexity
+- smaller images (faster deployment and scaling)
+- faster processing
+
+_Note: the release of `Pydantic` 2.0 may lead to speedups for the `FastAPI`+`Pydantic` stack._
