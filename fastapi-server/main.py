@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-
+# hello world
 @app.get("/hello_world")
 async def hello_world_handler():
     return "Hello, World!"
