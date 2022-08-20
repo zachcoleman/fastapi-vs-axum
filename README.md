@@ -47,6 +47,7 @@ Overall for deployment, FastAPI takes more configuration: various base images (b
 ## Speed
 
 Docker Desktop settings used:
+
 <img src="./assets/docker-settings.png" width=50% />
 <br>
 <br>
@@ -58,6 +59,7 @@ Results for axum times / fastapi times:
 <br>
 
 Visualized results by threads and number of requests (axum: red, fastapi: blue):
+
 <img src="./assets/route_testing-times.png" />
 <br>
 <br>
