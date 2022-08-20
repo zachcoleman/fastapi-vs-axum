@@ -1,6 +1,6 @@
-use axum::{routing::get, routing::post, Router, extract};
-use std::{net::SocketAddr};
+use axum::{extract, routing::get, routing::post, Router};
 use serde::Deserialize;
+use std::net::SocketAddr;
 
 #[tokio::main]
 async fn main() {
@@ -23,20 +23,22 @@ async fn hello_world_handler() -> &'static str {
 }
 
 /// capture and wildcard handler
-async fn capture_and_wildcard_handler(extract::Path((id, user)): extract::Path<(usize, String)>) -> String {
+async fn capture_and_wildcard_handler(
+    extract::Path((id, user)): extract::Path<(usize, String)>,
+) -> String {
     format!("{} - {}", id, user)
 }
 
 #[derive(Deserialize)]
-struct Payload{
+struct Payload {
     str1: String,
     str2: String,
     int1: usize,
     int2: isize,
-    alphanumeric: String
+    alphanumeric: String,
 }
 
 /// json parsing handler
-async fn json_parser_handler(extract::Json(payload): extract::Json<Payload>) -> String{
-    return payload.alphanumeric
+async fn json_parser_handler(extract::Json(payload): extract::Json<Payload>) -> String {
+    return payload.alphanumeric;
 }
