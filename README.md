@@ -9,12 +9,10 @@ _Note: this is a deliberate design choice of `axum` to have a "a macro free API"
 
 <img src="./assets/apps.png"/>
 <br>
-<br>
 
 In this case, the handlers and data models (pydantic and serde respectively) are virtually the same code footprint:
 
 <img src="./assets/handlers.png" />
-<br>
 <br>
 
 ## Deployment
@@ -32,14 +30,12 @@ The differences are really a tradeoff, Rust has two Dockerfiles and Python has o
 
 <img src="./assets/dockerfiles.png" />
 <br>
-<br>
 
 ### Image Size
 
 Rust requires a large upfront image for compilation (this could most likely be smaller, but compilation image size is not a concern). Python's image size can vary depending on user configuration, but remains ~2x larger than the Rust server image:
 
 <img src="./assets/images.png" />
-<br>
 <br>
 
 Overall for deployment, FastAPI takes more configuration: various base images (buster, slim-buster, etc.), two possible workers (gunicorn and uvicorn), and a dependency management solution. Being a compiled language, Rust avoids some of these tasks/configuration.
@@ -50,18 +46,15 @@ Docker Desktop settings used:
 
 <img src="./assets/docker-settings.png" width=50% />
 <br>
-<br>
 
 Results for axum times / fastapi times:
 
 <img src="./assets/docker-times.png" width=30% />
 <br>
-<br>
 
 Visualized results by threads and number of requests (axum: red, fastapi: blue):
 
 <img src="./assets/route_testing-times.png" />
-<br>
 <br>
 
 Overall, `axum` is faster in my very limited tests by ~6% than `FastAPI`. These results show that this is a negligible consideration for choosing between the frameworks. However, other online sources have shown `axum` to be one of the fastest servers available and a magnitude (~5x) faster than `FastAPI`. The CPU usage during the tests suggests the client is the bottleneck here for the benchmarks. To improve upon these results, server-side timings would need to be collected.
