@@ -46,4 +46,4 @@ Overall for deployment, FastAPI takes more configuration: various base images (b
 
 ## Speed
 
-<img src="./assets/docker-settings.png" />
+<img src="./assets/docker-settings.png" width=50% />
