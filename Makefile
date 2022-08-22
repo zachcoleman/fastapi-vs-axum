@@ -10,7 +10,7 @@ docker-build-axum:
 .PHONY: docker-run-axum
 docker-run-axum:
 	docker build . -f ./Dockerfiles/axum-server -t axum-server
-	docker run -p 80:80 axum-server
+	docker run -p 80:80 --cpus="1" -m="1G" axum-server
 
 .PHONY: native-run-axum
 native-run-axum:
@@ -21,7 +21,7 @@ native-run-axum:
 .PHONY: docker-run-fastapi
 docker-run-fastapi:
 	docker build . -f ./Dockerfiles/fastapi-server -t fastapi-server
-	docker run -p 80:80 fastapi-server
+	docker run -p 80:80 --cpus="1" -m="1G" fastapi-server
 
 .PHONY: native-run-fastapi
 native-run-fastapi:
