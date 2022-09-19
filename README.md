@@ -26,7 +26,7 @@ poetry export --without-hashes > requirements.txt
 
 For Rust, `cargo` and the `Cargo.toml` manage all the dependencies. Since Rust is compiled there is no runtime dependencies to pin or manage.
 
-The differences are really a tradeoff, Rust has two Dockerfiles and Python has one Dockerfile, but requires a method to install pinned dependencies (for a consistent environment).
+The differences are really a tradeoff, Rust has two Dockerfiles (or a multi-stage build) and Python has one Dockerfile, but requires a method to install pinned dependencies (for a consistent environment).
 
 <img src="./assets/dockerfiles.png" />
 <br>
